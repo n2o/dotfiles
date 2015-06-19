@@ -28,6 +28,7 @@ alias pypy='pypy3'
 
 # Git shortcuts
 alias gits='git status'
+alias gitp='git push'
 
 # Dev
 alias vim='mvim -v'

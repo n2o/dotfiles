@@ -119,12 +119,16 @@ command! W :w
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
 
-"Fix Shift+Tab
+" Fix Shift+Tab
 nmap <S-Tab> <<
 imap <S-Tab> <Esc><<i
 
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>g :NERDTreeToggle<CR>
+
+" Move lines up or down
+nnoremap ∆ :m-2<CR>==
+nnoremap º :m+<CR>==
 
 " Let me save files with sudo
 cmap w!! w !sudo tee % >/dev/null

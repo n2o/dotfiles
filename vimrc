@@ -32,6 +32,9 @@ Plugin 'junegunn/goyo.vim'
 let g:goyo_width = 130
 Plugin 'junegunn/limelight.vim'
 
+" Include Gradle Plugin
+Plugin 'tfnico/vim-gradle'
+
 " GitGutter to show changed lines
 Plugin 'airblade/vim-gitgutter'
 " Enable Git Support

@@ -3712,3 +3712,14 @@ zrclocal
 
 PERL_MB_OPT="--install_base \"/Users/cmeter/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/cmeter/perl5"; export PERL_MM_OPT;
+
+
+# Add virtualenv to prompt
+function virtual_env_prompt () {
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+
+zstyle ':prompt:grml:left:setup' items \
+            rc virtual-env change-root user at host path vcs percent pi-dashboard
+# endadd

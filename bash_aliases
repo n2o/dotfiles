@@ -4,9 +4,6 @@
 alias la='ls -A'
 alias ll='ls -l'
 
-# pdflatex
-alias pdflatex='/usr/local/texlive/2014/bin/x86_64-darwin/pdflatex'
-
 # 7zip
 alias keka='/Applications/Keka.app/Contents/Resources/keka7z'
 alias 7z='keka'

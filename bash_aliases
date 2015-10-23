@@ -9,8 +9,10 @@ alias keka='/Applications/Keka.app/Contents/Resources/keka7z'
 alias 7z='keka'
 
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
 alias skim='/Applications/Skim.app/Contents/MacOS/Skim'
+
+# Docker - Start default VM and set environment
+alias docker-init='docker-machine restart default && eval $(docker-machine env default)'
 
 # Python stuff
 ## virtualenv

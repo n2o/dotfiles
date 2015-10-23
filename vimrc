@@ -41,13 +41,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
 " Autocompletion from keywords of the current buffer
-Plugin 'davidhalter/jedi-vim'
-autocmd FileType python setlocal completeopt-=preview   " Disable auto docs
+" Plugin 'davidhalter/jedi-vim'
+" autocmd FileType python setlocal completeopt-=preview   " Disable auto docs
 
-" Bundle 'Valloric/YouCompleteMe'
+" Java IDE
+Plugin 'SirVer/ultisnips'
+Plugin 'ervandew/supertab'
 
-" Support for liquid Templates
-Plugin 'tpope/vim-liquid'
+Bundle 'Valloric/YouCompleteMe'
 
 " Enable Pep8
 " Plugin 'nvie/vim-flake8'
@@ -286,3 +287,7 @@ endif
 
 " Some other modifications
 set cursorline
+
+" Enable omnicomplete
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete

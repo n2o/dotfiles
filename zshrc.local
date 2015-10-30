@@ -51,9 +51,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/cmeter/.leinsbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/usr/texbin"
+# User configuration for my Mac
+#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/cmeter/.leinsbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -70,16 +69,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/cmeter/.leinsbi
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 
-# Path for Homebrew
-homebrew=/usr/local/bin:/usr/local/sbin
-export PATH=$homebrew:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# Configure GROOVY
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
-
 # Load aliases
 source $HOME/.bash_aliases
 
@@ -91,11 +80,10 @@ export PYTHONSTARTUP=~/.pythonrc
 ## Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
-# Pebble Dev
-export PATH="/Users/cmeter/Cloud/Development/Pebble/sdk3/bin:$PATH"
+# Ruby -- include path for ruby gems
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-# Ruby
-source .profile
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Show Arch splash screen
+screenfetch

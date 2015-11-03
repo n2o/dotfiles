@@ -85,5 +85,9 @@ source /usr/bin/virtualenvwrapper.sh
 # Ruby -- include path for ruby gems
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+# Configure Go
+export GOPATH=/home/n2o/Cloud/Development/Go
+export PATH=$PATH:$GOPATH/bin
+
 # Show Arch splash screen
 screenfetch

@@ -40,6 +40,9 @@ Plugin 'airblade/vim-gitgutter'
 " Enable Git Support
 Plugin 'tpope/vim-fugitive'
 
+" Add Go support
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+
 " Autocompletion from keywords of the current buffer
 " Plugin 'davidhalter/jedi-vim'
 " autocmd FileType python setlocal completeopt-=preview   " Disable auto docs

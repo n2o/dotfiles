@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 
 # Good themes
-ZSH_THEME="bira"
+#ZSH_THEME="bira"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -47,27 +47,9 @@ ZSH_THEME="bira"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git docker django lein svn pip rake virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration for my Mac
-#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/cmeter/.leinsbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/usr/texbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 
 # Load aliases
 source $HOME/.bash_aliases
@@ -91,3 +73,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # Show Arch splash screen
 screenfetch
+
+# Start gnome keyring
+eval `gnome-keyring-daemon --start`

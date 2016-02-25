@@ -3710,9 +3710,6 @@ zrclocal
 # mode: sh
 # End:
 
-PERL_MB_OPT="--install_base \"/Users/cmeter/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/cmeter/perl5"; export PERL_MM_OPT;
-
 
 # Add virtualenv to prompt
 function virtual_env_prompt () {

@@ -3,10 +3,20 @@
 # ls variants
 alias la='ls -A'
 alias ll='ls -l'
+alias l='ls -lh'
+
+# Shortcut for xdg-open
+fxopen() {
+    xdg-open $1
+}
+alias xo=fxopen
 
 
-# Docker - Start default VM and set environment
-alias docker-init='docker-machine restart default && eval $(docker-machine env default)'
+# Docker
+docker-ip() {
+    docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
 
 
 # Python stuff
@@ -15,11 +25,15 @@ fmkvirtualenv3() {
     mkvirtualenv --python=/usr/bin/python3 $1
 }
 alias mkvirtualenv3=fmkvirtualenv3
+fmkvirtualenv2() {
+    mkvirtualenv --python=/usr/bin/python2 $1
+}
+alias mkvirtualenv2=fmkvirtualenv2
 
 alias python='python3'
 alias pip='pip3'
 alias pypy='pypy3'
-
+alias pip-upgrade='pip freeze | grep -v "^\-e" | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Git shortcuts
 alias gits='git status'
@@ -44,6 +58,9 @@ fnnautilus() {
     nautilus &
 }
 alias nautilus=fnnautilus
+
+# Restart KDE5
+alias plasma-restart='kbuildsycoca5 && kquitapp5 plasmashell && kstart5 plasmashell'
 
 
 # Tunnel

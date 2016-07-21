@@ -11,13 +11,15 @@ fxopen() {
 }
 alias xo=fxopen
 
+# Go to
+alias goto-dbas='cd /home/n2o/Cloud/Promotion/src/dbas'
+alias goto-discuss='cd /home/n2o/Cloud/Promotion/src/discuss'
+
 
 # Docker
 docker-ip() {
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 }
-
-
 
 # Python stuff
 ## virtualenv
@@ -33,11 +35,14 @@ alias mkvirtualenv2=fmkvirtualenv2
 alias python='python3'
 alias pip='pip3'
 alias pypy='pypy3'
-alias pip-upgrade='pip freeze | grep -v "^\-e" | cut -d = -f 1  | xargs -n1 pip install -U'
+alias pip-upgrade='pip freeze | grep -v "^\-e" | cut -d = -f 1  | sudo xargs -n1 pip install -U'
 
 # Git shortcuts
 alias gits='git status'
 alias gitp='git push'
+alias gcasm='git commit -a -S -m'
+alias gcam='git commit -a -m'
+alias gcsm='git commit -S -m'
 
 
 # Detach GUI applications from command line

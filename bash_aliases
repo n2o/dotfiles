@@ -1,5 +1,7 @@
 # ~/.bash_aliases
 
+source .bash_aliases_docker
+
 # ls variants
 alias la='ls -A'
 alias ll='ls -l'
@@ -15,6 +17,8 @@ alias xo=fxopen
 alias goto-dbas='cd /home/n2o/Cloud/Promotion/src/dbas'
 alias goto-discuss='cd /home/n2o/Cloud/Promotion/src/discuss'
 
+# Emacs
+alias es='emacs'
 
 # Docker
 docker-ip() {
@@ -74,3 +78,4 @@ alias socks-10022-ceres='ssh -fND 10022 ceres'
 alias socks-80='sudo ssh -fND 80 n1o@christian-meter.de'
 alias socks-443='sudo ssh -fND 443 n1o@christian-meter.de'
 alias socks-22='sudo ssh -fND 22 n1o@christian-meter.de'
+

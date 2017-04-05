@@ -13,9 +13,12 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/Vundle.vim'
 
-"My Bundles here:
+" My Bundles here:
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
+
+" Better git commit messages
+Bundle 'rhysd/committia.vim'
 
 " Write faster HTML
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}

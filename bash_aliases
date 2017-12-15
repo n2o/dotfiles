@@ -19,6 +19,7 @@ alias goto-discuss='cd /home/n2o/Cloud/Promotion/src/discuss'
 
 # Emacs
 alias es='emacs'
+alias ec='emacsclient -nc'
 
 # Docker
 docker-ip() {

@@ -20,6 +20,18 @@ Bundle 'bling/vim-airline'
 " Better git commit messages
 Bundle 'rhysd/committia.vim'
 
+" Git commit message settingsa
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    end
+endfunction
+
 " Write faster HTML
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'majutsushi/tagbar'

@@ -4,6 +4,9 @@ source $HOME/.bash_aliases
 unalias rm
 unalias cp
 
+# Settings for Dolphin
+XDG_CURRENT_DESKTOP=KDE
+
 # Custom Keybinding
 ## Bind Caps to ESC
 setxkbmap -option caps:escape
@@ -27,7 +30,7 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
 # Show Arch splash screen
-screenfetch
+neofetch
 
 ## SSH
 # Start gnome keyring

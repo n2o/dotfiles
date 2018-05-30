@@ -3,22 +3,21 @@
 " ==========================================================
 set encoding=utf8
 
-set nocompatible
-filetype off
+" Autoload vim-plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call plug#begin('~/.vim/bundle')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/Vundle.vim'
-
-" My Bundles here:
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bling/vim-airline'
+" My Plugs here:
+Plug 'Lokaltog/vim-easymotion'
+Plug 'bling/vim-airline'
 
 " Better git commit messages
-Bundle 'rhysd/committia.vim'
+Plug 'rhysd/committia.vim'
 
 " Git commit message settingsa
 let g:committia_hooks = {}
@@ -33,48 +32,53 @@ function! g:committia_hooks.edit_open(info)
 endfunction
 
 " Write faster HTML
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/nerdtree'
-Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 
 " Coffeescript support
-Bundle 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 autocmd BufWritePost *.coffee silent execute 'make!'
 
 " Add distraction free mode
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 let g:goyo_width = 130
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 
-" Include Gradle Plugin
-Plugin 'tfnico/vim-gradle'
+" Include Gradle Plug
+Plug 'tfnico/vim-gradle'
 
 " GitGutter to show changed lines
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Enable Git Support
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Add Go support
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'nsf/gocode', {'rtp': 'vim/'}
 
 " Autocompletion from keywords of the current buffer
-" Plugin 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 " autocmd FileType python setlocal completeopt-=preview   " Disable auto docs
 
 " Java IDE
-Plugin 'SirVer/ultisnips'
-Plugin 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
 
-Bundle 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 
 " Enable Pep8
-" Plugin 'nvie/vim-flake8'
+" Plug 'nvie/vim-flake8'
 " autocmd BufWritePost *.py call Flake8()
 " let g:syntastic_python_flake8_args='--ignore=E501' " ignore line length because this is stupid
 
-" All about comments
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
+Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'terryma/vim-multiple-cursors'
+
+Plug 'kien/rainbow_parentheses.vim'
+
+call plug#end()
 
 " Removes trailing spaces
 function! TrimWhiteSpace()
@@ -87,20 +91,15 @@ autocmd FileType python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
 autocmd FileType python,java autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " LaTeX settings
-Plugin 'lervag/vimtex'
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 autocmd BufNewFile,BufRead *.tex set spell
 autocmd BufNewFile,BufRead *.tex set wrap
 
-" Multiple Cursors
-Bundle 'terryma/vim-multiple-cursors'
-
 " Multiple code styleguides
-" Bundle 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 "Rainbow brackets
-Plugin 'kien/rainbow_parentheses.vim.git'
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare

@@ -1,11 +1,13 @@
 # ~/.bash_aliases
 
-source .bash_aliases_docker
+source ~/.bash_aliases_docker
 
 # ls variants
 alias la='ls -A'
 alias ll='ls -l'
 alias l='ls -lh'
+
+alias j='jump'
 
 # Shortcut for xdg-open
 fxopen() {

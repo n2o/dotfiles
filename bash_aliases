@@ -6,7 +6,6 @@ source ~/.bash_aliases_docker
 alias la='ls -A'
 alias ll='ls -l'
 alias l='ls -lh'
-
 alias j='jump'
 
 # Shortcut for xdg-open
@@ -15,9 +14,11 @@ fxopen() {
 }
 alias xo=fxopen
 
-# Go to
-alias goto-dbas='cd /home/n2o/Cloud/Promotion/src/dbas'
-alias goto-discuss='cd /home/n2o/Cloud/Promotion/src/discuss'
+# Find in pdf files
+fnfindinpdf() {
+    find . -iname '*.pdf' -exec pdfgrep -i "$1" {} +
+}
+alias pdffind=fnfindinpdf
 
 # Emacs
 alias es='emacs'
@@ -28,12 +29,14 @@ docker-ip() {
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 }
 
+
 # Python stuff
 ## virtualenv
 fmkvirtualenv3() {
     mkvirtualenv --python=/usr/bin/python3 $1
 }
 alias mkvirtualenv3=fmkvirtualenv3
+
 fmkvirtualenv2() {
     mkvirtualenv --python=/usr/bin/python2 $1
 }
@@ -51,6 +54,7 @@ alias gcasm='git commit -a -S -m'
 alias gcam='git commit -a -m'
 alias gcsm='git commit -S -m'
 
+alias ssh='TERM=xterm-256color ssh'                                                                                                                                                             
 
 # Detach GUI applications from command line
 ## emacs

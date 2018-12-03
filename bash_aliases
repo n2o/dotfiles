@@ -3,10 +3,13 @@
 source ~/.bash_aliases_docker
 
 # ls variants
+alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -l'
 alias l='ls -lh'
 alias j='jump'
+alias k='k -h'
+
 
 # Shortcut for xdg-open
 fxopen() {
@@ -23,6 +26,9 @@ alias pdffind=fnfindinpdf
 # Emacs
 alias es='emacs'
 alias ec='emacsclient -nc'
+
+# Vim
+alias vim='nvim'
 
 # Docker
 docker-ip() {

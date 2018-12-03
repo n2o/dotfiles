@@ -1,8 +1,33 @@
+# -----------------------------------------------------------------------------
+# ZSH Plugins
+source ~/.zplug/init.zsh
+
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "supercrabtree/k"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "modules/git", from:prezto
+zplug "modules/editor", from:prezto
+zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load # --verbose
+
+# -----------------------------------------------------------------------------
+
 # Load aliases
 source $HOME/.bash_aliases
-
-unalias rm
-unalias cp
 
 # Settings for Dolphin
 XDG_CURRENT_DESKTOP=KDE
@@ -49,12 +74,12 @@ export SSH_AGENT_PID="$(pgrep gnome-keyring)"
 #   ssh-add
 # fi
 
-# Add virtualenv prompt to grml theme
-function virtual_env_prompt () {
-    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
-}
-grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
-zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host path vcs percent
+# # Add virtualenv prompt to grml theme
+# function virtual_env_prompt () {
+#     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+# }
+# grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+# zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host path vcs percent
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -63,3 +88,37 @@ zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host p
 # https://github.com/sos4nt/dynamic-colors
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 source $HOME/.dynamic-colors/completions/dynamic-colors.zsh
+
+# -----------------------------------------------------------------------------
+# ZSH Config
+export SAVEHIST=1000
+export HISTSIZE=1000
+export HISTFILE=~/.zhistory
+setopt share_history
+setopt menu_complete
+setopt autocd
+setopt glob_dots
+
+# Automatic color output
+zstyle ':*:*' color 'yes'
+
+# -----------------------------------------------------------------------------
+# Theme - Spaceship
+SPACESHIP_BATTERY_SHOW=false
+SPACESHIP_EXEC_TIME_SHOW=false
+
+# Icons
+SPACESHIP_DOCKER_SYMBOL="$(echo -e "\uf308") "
+# SPACESHIP_CHAR_SYMBOL="$(echo -e "\ufb26") "
+SPACESHIP_CHAR_SYMBOL="λ "
+SPACESHIP_PACKAGE_SYMBOL="$(echo -e "\uf8d6") "
+SPACESHIP_NODE_SYMBOL="$(echo -e "\uf898") "
+SPACESHIP_ELIXIR_SYMBOL="$(echo -e "\ue62d") "
+SPACESHIP_GOLANG_SYMBOL="$(echo -e "\ue626") "
+SPACESHIP_PHP_SYMBOL="$(echo -e "\ue608") "
+SPACESHIP_RUST_SYMBOL="$(echo -e "\ue7a8") "
+SPACESHIP_HASKELL_SYMBOL="$(echo -e "\ue61f") "
+SPACESHIP_AWS_SYMBOL="$(echo -e "\ue7ad") "
+SPACESHIP_VENV_SYMBOL="$(echo -e "\uf81f") "
+SPACESHIP_PYENV_SYMBOL="$(echo -e "\uf81f") "
+

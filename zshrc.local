@@ -11,7 +11,9 @@ zplug "supercrabtree/k"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "modules/git", from:prezto
 zplug "modules/editor", from:prezto
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+# zplug "dracula/zsh", as:theme
+# zplug "themes/avit", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -121,4 +123,3 @@ SPACESHIP_HASKELL_SYMBOL="$(echo -e "\ue61f") "
 SPACESHIP_AWS_SYMBOL="$(echo -e "\ue7ad") "
 SPACESHIP_VENV_SYMBOL="$(echo -e "\uf81f") "
 SPACESHIP_PYENV_SYMBOL="$(echo -e "\uf81f") "
-

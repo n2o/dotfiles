@@ -24,7 +24,8 @@ fnfindinpdf() {
 alias pdffind=fnfindinpdf
 
 # Emacs
-alias es='emacs'
+e() { emacs "$@" & }
+# alias es=fnemacs
 alias ec='emacsclient -nc'
 
 # Vim

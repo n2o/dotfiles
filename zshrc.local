@@ -1,32 +1,65 @@
 # -----------------------------------------------------------------------------
-# ZSH Plugins
-source ~/.zplug/init.zsh
+# Antigen - A ZSH Plugin Manager
+source ~/.zsh/antigen.zsh
 
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "supercrabtree/k"
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "modules/git", from:prezto
-zplug "modules/editor", from:prezto
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-# zplug "dracula/zsh", as:theme
-# zplug "themes/avit", from:oh-my-zsh
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle pip
+antigen bundle lein
+antigen bundle gradle
+antigen bundle command-not-found
+antigen bundle colored-man-pages
+
+antigen bundle b4b4r07/enhancd
+antigen bundle supercrabtree/k
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
+
+# Themes
+antigen bundle denysdovhan/spaceship-prompt
+antigen bundle dracula/zsh
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme denysdovhan/spaceship-prompt
+# antigen theme agnoster
+# antigen theme dracula/zsh
+
+# Enable Autocompletion
+autoload -Uz compinit
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+  compinit -i
+else
+  compinit -C -i
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load # --verbose
+zmodload -i zsh/complist
+
+# Apply changes -- last line of antigen config
+antigen apply
 
 # -----------------------------------------------------------------------------
+
+# Bindings
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+
+# Options
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
+
+# Styles
+zstyle ':completion:*' menu select # select completions with arrow keys
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
 # Load aliases
 source $HOME/.bash_aliases
@@ -61,28 +94,6 @@ eval `gnome-keyring-daemon --start`
 export SSH_AUTH_SOCK="$(ls /run/user/$(id -u $(whoami))/keyring*/ssh|head -1)"
 export SSH_AGENT_PID="$(pgrep gnome-keyring)"
 
-# GPG exports
-# if [ -f "${HOME}/.gnupg/gpg-agent-info-$(hostname)" ]; then
-#     . "${HOME}/.gnupg/gpg-agent-info-$(hostname)"
-#     export GPG_AGENT_INFO
-#     export SSH_AUTH_SOCK
-#     export SSH_AGENT_PID
-# fi
-# GPG_TTY=$(tty)
-# export GPG_TTY
-# # Start ssh-agent if not exists
-# if [ -z "$SSH_AUTH_SOCK" ] ; then
-#   eval `ssh-agent -s`
-#   ssh-add
-# fi
-
-# # Add virtualenv prompt to grml theme
-# function virtual_env_prompt () {
-#     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
-# }
-# grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
-# zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host path vcs percent
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -108,6 +119,8 @@ zstyle ':*:*' color 'yes'
 # Theme - Spaceship
 SPACESHIP_BATTERY_SHOW=false
 SPACESHIP_EXEC_TIME_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_NODE_SHOW=false
 
 # Icons
 SPACESHIP_DOCKER_SYMBOL="$(echo -e "\uf308") "

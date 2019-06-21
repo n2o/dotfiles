@@ -84,11 +84,3 @@ alias nautilus=fnnautilus
 # Restart KDE5
 alias plasma-restart='kbuildsycoca5 && kquitapp5 plasmashell && kstart5 plasmashell'
 
-
-# Tunnel
-alias socks-10022='ssh -fND 10022 n1o@christian-meter.de'
-alias socks-10022-ceres='ssh -fND 10022 ceres'
-alias socks-80='sudo ssh -fND 80 n1o@christian-meter.de'
-alias socks-443='sudo ssh -fND 443 n1o@christian-meter.de'
-alias socks-22='sudo ssh -fND 22 n1o@christian-meter.de'
-

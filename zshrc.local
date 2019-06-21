@@ -12,6 +12,7 @@ antigen bundle lein
 antigen bundle gradle
 antigen bundle command-not-found
 antigen bundle colored-man-pages
+antigen bundle aws
 
 antigen bundle b4b4r07/enhancd
 antigen bundle supercrabtree/k
@@ -54,6 +55,7 @@ antigen apply
 # Options
 setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
+# setopt menu_complete # automatically select first choice from menu
 setopt always_to_end # move cursor to end if word had one match
 
 # Styles
@@ -65,11 +67,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 source $HOME/.bash_aliases
 
 # Settings for Dolphin
-XDG_CURRENT_DESKTOP=KDE
-
-# Custom Keybinding
-## Bind Caps to ESC
-setxkbmap -option caps:escape
+# XDG_CURRENT_DESKTOP=KDE
 
 # Python
 ## Enable Auto Completion
@@ -104,11 +102,10 @@ source $HOME/.dynamic-colors/completions/dynamic-colors.zsh
 
 # -----------------------------------------------------------------------------
 # ZSH Config
-export SAVEHIST=1000
-export HISTSIZE=1000
+export SAVEHIST=999999999
+export HISTSIZE=999999999
 export HISTFILE=~/.zhistory
 setopt share_history
-setopt menu_complete
 setopt autocd
 setopt glob_dots
 
@@ -117,7 +114,7 @@ zstyle ':*:*' color 'yes'
 
 # -----------------------------------------------------------------------------
 # Theme - Spaceship
-SPACESHIP_BATTERY_SHOW=false
+# SPACESHIP_BATTERY_SHOW=always
 SPACESHIP_EXEC_TIME_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
 SPACESHIP_NODE_SHOW=false
@@ -136,3 +133,10 @@ SPACESHIP_HASKELL_SYMBOL="$(echo -e "\ue61f") "
 SPACESHIP_AWS_SYMBOL="$(echo -e "\ue7ad") "
 SPACESHIP_VENV_SYMBOL="$(echo -e "\uf81f") "
 SPACESHIP_PYENV_SYMBOL="$(echo -e "\uf81f") "
+
+# added by travis gem
+[ -f /home/n2o/.travis/travis.sh ] && source /home/n2o/.travis/travis.sh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/n2o/Repos/classroom-assistant/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/n2o/Repos/classroom-assistant/node_modules/tabtab/.completions/electron-forge.zsh

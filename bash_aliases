@@ -7,13 +7,20 @@ alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -l'
 alias l='ls -lh'
-alias j='jump'
 alias k='k -h'
 
+# Git Shortcuts
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gr='git rebase'
+alias lg='lazygit'
+
+alias idea='intellij-idea-ultimate-edition'
+alias mc='mcli'
 
 # Shortcut for xdg-open
 fxopen() {
-    xdg-open $1
+    xdg-open $@ &
 }
 alias xo=fxopen
 
@@ -25,7 +32,6 @@ alias pdffind=fnfindinpdf
 
 # Emacs
 e() { emacs "$@" & }
-# alias es=fnemacs
 alias ec='emacsclient -nc'
 
 # Vim
@@ -62,13 +68,6 @@ alias gcam='git commit -a -m'
 alias gcsm='git commit -S -m'
 
 alias ssh='TERM=xterm-256color ssh'                                                                                                                                                             
-
-# Detach GUI applications from command line
-## emacs
-fnemacs() {
-    emacs $1 &
-}
-alias emacs=fnemacs
 
 ## okular
 fnokular() {
